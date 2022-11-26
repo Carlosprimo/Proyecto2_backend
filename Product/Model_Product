@@ -1,8 +1,0 @@
-const mongoose = require("mongoose");
-
-
-const Prod_schema = new mongoose.Schema({
-
-  });
-     
-  module.exports = mongoose.model("Producto", Prod_schema);
