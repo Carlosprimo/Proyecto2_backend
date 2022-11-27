@@ -11,13 +11,13 @@
  * Get reseñas de un usuario
  * Get reseñas de un producto
  * Get reseñas segun puntuacion ("muestrame las reseñas de 5 estrellas")
-## CRUD de categorias de productos
+## CRUD de categorias de productos ✔️
 
 ## Endpoints con autenticacion:
 * --UD de usuarios ✔️
 * C-UD de productos
 * C--D de reseñas
-* C-UD de categorias de productos
+* C-UD de categorias de productos ✔️
 
 ## Otros
  * Get productos en carrito

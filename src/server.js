@@ -10,6 +10,7 @@ function createServer () {
 
     // Routes
     app.use('/users', require('./routes/user'));
+    app.use('/products', require('./routes/products'))
 
     app.use(async (req, res) => {
         res.status(404).json({ error: "Not found" });
