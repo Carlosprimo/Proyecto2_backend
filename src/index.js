@@ -1,9 +1,11 @@
-const mongoose = require('mongoose');
+const createServer = require('./server');
 require('dotenv').config();
+require('./database');
 
-const MONGO_URI = process.env.MONGO_URI;
+const PORT = process.env.PORT || 5000;
 
-mongoose.connect(MONGO_URI, {}, (err) => {
-    if (err) console.error(err);
-    else console.log('Connected to MongoDB');
+// Server
+const server = createServer();
+server.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
 });
