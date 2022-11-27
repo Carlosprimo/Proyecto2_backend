@@ -2,11 +2,11 @@
 ## CRUD de usuarios ✔️
  * Login con usuario y contraseña. ✔️
  * Login con token. (El "token" siendo el _id de un user) ✔️
-## CRUD de productos
- * Get productos de un usuario
- * Get producto individual
- * Get productos segun nombre (busqueda)
- * Get productos segun categoria(s)
+## CRUD de productos✔️
+ * Get productos de un usuario✔️
+ * Get producto individual✔️
+ * Get productos segun nombre (busqueda)✔️
+ * Get productos segun categoria(s)✔️
 ## CR-D de reseñas
  * Get reseñas de un usuario
  * Get reseñas de un producto
@@ -15,7 +15,7 @@
 
 ## Endpoints con autenticacion:
 * --UD de usuarios ✔️
-* C-UD de productos
+* C-UD de productos✔️
 * C--D de reseñas
 * C-UD de categorias de productos ✔️
 

@@ -44,8 +44,12 @@ async function ProductCategoriesUpdate(req, res) {
         if (!user) return res.status(400).json({ error: 'Invalid token' });
         if (!categoryBody) return res.status(400).json({ error: 'Please fill all the fields' });
         try {
-            ProductCategories.updateOne({_id: productCategoryID}, {$set: categoryBody}).then(result => {
-                res.status(200).send({message: "Successful product category update"})
+            ProductCategories.updateOne({_id: productCategoryID, user: user}, {$set: categoryBody}).then(result => {
+                if (result.modifiedCount > 0) {
+                    res.status(200).send({message: "Successful product category update"})
+                }else{
+                    res.status(200).send({message: "Failure to update product category"})
+                }
             });
         } catch (error) {
             res.status(500).json({ error: 'Error', stack: error});
@@ -64,8 +68,12 @@ async function ProductCategoriesDelete(req, res) {
         const user = await User.findById(decoded.sub);
         if (!user) return res.status(400).json({ error: 'Invalid token' });
         try {
-            ProductCategories.deleteOne({_id: productCategoryID}).then(result => {
-                res.status(200).send({message: "Successful product category delete"})
+            ProductCategories.deleteOne({_id: productCategoryID, user: user}).then(result => {
+                if (result.deletedCount > 0){
+                    res.status(200).send({message: "Successful product category delete"})
+                }else{
+                    res.status(200).send({message: "Failure to delete product category"})
+                }
             });
         } catch (error) {
             res.status(500).json({ error: 'Error', stack: error});
