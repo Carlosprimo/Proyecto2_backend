@@ -28,7 +28,6 @@ async function productCreate(req, res) {
     } catch (error) {
         return res.status(400).json({ error: 'Invalid token' });
     }
-
 }
 
 async function getProductUser(req, res) {

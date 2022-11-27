@@ -7,16 +7,16 @@
  * Get producto individual✔️
  * Get productos segun nombre (busqueda)✔️
  * Get productos segun categoria(s)✔️
-## CR-D de reseñas
- * Get reseñas de un usuario
- * Get reseñas de un producto
- * Get reseñas segun puntuacion ("muestrame las reseñas de 5 estrellas")
+## CR-D de reseñas✔️
+ * Get reseñas de un usuario✔️
+ * Get reseñas de un producto✔️
+ * Get reseñas segun puntuacion ("muestrame las reseñas de 5 estrellas")✔️
 ## CRUD de categorias de productos ✔️
 
 ## Endpoints con autenticacion:
 * --UD de usuarios ✔️
 * C-UD de productos✔️
-* C--D de reseñas
+* C--D de reseñas✔️
 * C-UD de categorias de productos ✔️
 
 ## Otros
