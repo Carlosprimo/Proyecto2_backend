@@ -26,7 +26,7 @@
  * "Comprar" carrito
  * Get historial de compras
 
-## Pruebas unitarias
+## Pruebas unitarias (añadí las dependencias de jest+babel+supertest)
   * Cada endpoint debe tener minimo cuatro prueba unitarias:
   * Prueba del request de exito
   * Prueba del metodo interno de exito
