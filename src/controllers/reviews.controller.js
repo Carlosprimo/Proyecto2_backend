@@ -43,7 +43,7 @@ async function reviewUser(req, res) {
 async function reviewProduct(req, res) {
     const productID = req.params.id
     try {
-        reviews = await Review.find({product: productID})
+        const reviews = await Review.find({product: productID})
         res.status(200).json({ reviews })
     } catch (error) {
         return res.status(500).json({ error: 'Error', stack: error});
@@ -52,7 +52,7 @@ async function reviewProduct(req, res) {
 
 async function reviewRating(req, res) {
     try {
-        reviews = await Review.find({rating: 5})
+        const reviews = await Review.find({rating: 5})
         res.status(200).json({ reviews })
     } catch (error) {
         return res.status(500).json({ error: 'Error', stack: error});
