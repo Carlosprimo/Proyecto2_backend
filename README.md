@@ -20,11 +20,11 @@
 * C-UD de categorias de productos ✔️
 
 ## Otros
- * Get productos en carrito
- * Agregar producto a carrito
- * Eliminar producto de carrito
- * "Comprar" carrito
- * Get historial de compras
+ * Get productos en carrito ✔️
+ * Agregar producto a carrito ✔️
+ * Eliminar producto de carrito ✔️
+ * "Comprar" carrito ✔️
+ * Get historial de compras ✔️
 
 ## Pruebas unitarias
   * Cada endpoint debe tener minimo cuatro prueba unitarias:

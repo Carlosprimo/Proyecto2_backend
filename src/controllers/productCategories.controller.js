@@ -8,7 +8,7 @@ async function ProductCategoriesRead(req, res) {
         res.json({ productCategories });
 
     } catch (error) {
-        res.status(500).json({ error: 'Error', stack: error});
+        return res.status(500).json({ error: 'Error', stack: error});
     }
 }
 
@@ -27,7 +27,7 @@ async function ProductCategoriesCreate(req, res) {
             await newProductCategory.save();
             res.status(200).json({message: "Product category save" });
         } catch (error) {
-            res.status(500).json({ error: 'Error', stack: error});
+            return res.status(500).json({ error: 'Error', stack: error});
         }
     } catch (error) {
         return res.status(400).json({ error: 'Invalid token' });
@@ -44,15 +44,15 @@ async function ProductCategoriesUpdate(req, res) {
         if (!user) return res.status(400).json({ error: 'Invalid token' });
         if (!categoryBody) return res.status(400).json({ error: 'Please fill all the fields' });
         try {
-            ProductCategories.updateOne({_id: productCategoryID, user: user}, {$set: categoryBody}).then(result => {
+            ProductCategories.updateOne({_id: productCategoryID, user: user}, {$set: {categoryBody}}).then(result => {
                 if (result.modifiedCount > 0) {
                     res.status(200).send({message: "Successful product category update"})
                 }else{
-                    res.status(200).send({message: "Failure to update product category"})
+                    return res.status(200).send({message: "Failure to update product category"})
                 }
             });
         } catch (error) {
-            res.status(500).json({ error: 'Error', stack: error});
+            return res.status(500).json({ error: 'Error', stack: error});
         }
     } catch (error) {
         return res.status(400).json({ error: 'Invalid token' });
@@ -72,11 +72,11 @@ async function ProductCategoriesDelete(req, res) {
                 if (result.deletedCount > 0){
                     res.status(200).send({message: "Successful product category delete"})
                 }else{
-                    res.status(200).send({message: "Failure to delete product category"})
+                    return res.status(200).send({message: "Failure to delete product category"})
                 }
             });
         } catch (error) {
-            res.status(500).json({ error: 'Error', stack: error});
+            return res.status(500).json({ error: 'Error', stack: error});
         }
     } catch (error) {
         return res.status(400).json({ error: 'Invalid token' });

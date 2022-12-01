@@ -36,7 +36,7 @@ async function reviewUser(req, res) {
         reviews = await Review.find({user: userID})
         res.status(200).json({ reviews })
     } catch (error) {
-        res.status(500).json({ error: 'Error', stack: error});
+        return res.status(500).json({ error: 'Error', stack: error});
     }
 }
 
@@ -46,7 +46,7 @@ async function reviewProduct(req, res) {
         reviews = await Review.find({product: productID})
         res.status(200).json({ reviews })
     } catch (error) {
-        res.status(500).json({ error: 'Error', stack: error});
+        return res.status(500).json({ error: 'Error', stack: error});
     }
 }
 
@@ -55,7 +55,7 @@ async function reviewRating(req, res) {
         reviews = await Review.find({rating: 5})
         res.status(200).json({ reviews })
     } catch (error) {
-        res.status(500).json({ error: 'Error', stack: error});
+        return res.status(500).json({ error: 'Error', stack: error});
     }
 }
 
@@ -72,11 +72,11 @@ async function reviewDelete(req, res) {
                 if (result.deletedCount > 0) {
                     res.status(200).json({message: "Review delete" });
                 }else {
-                    res.status(200).send({message: "Failure to delete review"})
+                    return res.status(200).send({message: "Failure to delete review"})
                 }
             });
         } catch (error) {
-            res.status(500).json({ error: 'Error', stack: error});
+            return res.status(500).json({ error: 'Error', stack: error});
         }
     } catch (error) {
         return res.status(400).json({ error: 'Invalid token' });

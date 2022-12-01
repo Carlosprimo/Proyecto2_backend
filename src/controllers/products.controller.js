@@ -16,7 +16,7 @@ async function productCreate(req, res) {
         const categoryProduct = await ProductCategories.findOne({ category });
         if (!categoryProduct) {
             try {
-                res.status(500).json({ error: 'Error', stack: error});
+                return res.status(500).json({ error: 'Error', stack: error});
             } catch (error) {
                 const newProduct = new Product({ name, price, user, category});
                 await newProduct.save();
@@ -35,12 +35,12 @@ async function getProductUser(req, res) {
     try {
         const products = await Product.find({user: userID});
         if (!products) {
-            res.status(200).json({message: 'The user has not created any products'})
+            return res.status(200).json({message: 'The user has not created any products'})
         } else {
             res.status(200).json({ products })      
         }
     } catch (error) {
-        res.status(500).json({ error: 'Error', stack: error});
+        return res.status(500).json({ error: 'Error', stack: error});
     }
 }
 
@@ -49,12 +49,12 @@ async function getProduct(req, res) {
     try {
         const products = await Product.find({_id: pruductID});
         if (!products) {
-            res.status(200).json({message: 'Identification does not exist'})
+            return res.status(200).json({message: 'Identification does not exist'})
         } else {
             res.status(200).json({ products })      
         }
     } catch (error) {
-        res.status(500).json({ error: 'Error', stack: error});
+        return res.status(500).json({ error: 'Error', stack: error});
     }
 }
 
@@ -63,12 +63,12 @@ async function getProductName(req, res) {
     try {
         const products = await Product.find({name: nameProduct});
         if (!products) {
-            res.status(200).json({message: 'Name does not exist'})
+            return res.status(200).json({message: 'Name does not exist'})
         } else {
             res.status(200).json({ products })      
         }
     } catch (error) {
-        res.status(500).json({ error: 'Error', stack: error});
+        return res.status(500).json({ error: 'Error', stack: error});
     }
 }
 
@@ -77,12 +77,12 @@ async function getProductCategory(req, res) {
     try {
         const products = await Product.find({category: categoryProduct});
         if (!products) {
-            res.status(200).json({message: 'Name does not exist'})
+            return res.status(200).json({message: 'Name does not exist'})
         } else {
             res.status(200).json({ products })      
         }
     } catch (error) {
-        res.status(500).json({ error: 'Error', stack: error});
+        return res.status(500).json({ error: 'Error', stack: error});
     }
 }
 
@@ -103,11 +103,11 @@ async function productUpdate(req, res) {
                 if (result.modifiedCount > 0) {
                     res.status(200).send({message: "Successful product update"})
                 }else{
-                    res.status(200).send({message: "Failure to update product"})
+                    return res.status(200).send({message: "Failure to update product"})
                 }
             });
         } catch (error) {
-            res.status(500).json({ error: 'Invalid update', stack: error});
+            return res.status(500).json({ error: 'Invalid update', stack: error});
         }
     } catch (error) {
         return res.status(400).json({ error: 'Invalid token' });
@@ -130,11 +130,11 @@ async function productDelete(req, res) {
                 if (result.modifiedCount > 0) {
                     res.status(200).send({message: "Successful product delete"})
                 }else{
-                    res.status(200).send({message: "Failure to delete product"})
+                    return res.status(200).send({message: "Failure to delete product"})
                 }
             });
         } catch (error) {
-            res.status(500).json({ error: 'Invalid update', stack: error});
+            return res.status(500).json({ error: 'Invalid update', stack: error});
         }
     } catch (error) {
         return res.status(400).json({ error: 'Invalid token' });

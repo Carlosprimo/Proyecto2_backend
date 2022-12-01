@@ -7,7 +7,7 @@ async function usersRead(req, res) {
         res.json({ users });
 
     } catch (error) {
-        res.status(500).json({ error: 'Error', stack: error});
+        return res.status(500).json({ error: 'Error', stack: error});
     }
 
 }
@@ -19,7 +19,7 @@ async function userRead(req, res) {
         res.json({ user });
 
     } catch (error) {
-        res.status(500).json({ error: 'Invalid ID', stack: error});
+        return res.status(500).json({ error: 'Invalid ID', stack: error});
     }
 }
 
@@ -34,12 +34,14 @@ async function userUpdate(req, res) {
         const user = await User.findById(decoded.sub);
         if (!user) return res.status(400).json({ error: 'Invalid token' });
         try {
-            const { userBody } = req.body
-            User.updateOne({ _id: user._id }, { $set: userBody}).then(result => {
-                res.status(200).send({message: "Successful user update"})
+            const { username, email, password } = req.body
+            User.updateOne({ _id: user._id }, { $set: {username: username, email: email, password: password}}).then(result => {
+                if (result.modifiedCount > 0) {
+                    res.status(200).send({message: "Successful user update"})
+                }
             });
         } catch (error) {
-            res.status(500).json({ error: 'Invalid update', stack: error});
+            return res.status(500).json({ error: 'Invalid update', stack: error});
         }
     } catch (error) {
         return res.status(400).json({ error: 'Invalid token' });
@@ -59,7 +61,7 @@ async function userDelete(req, res) {
                 res.status(200).send({message: "Successful user delete"})
             });
         } catch (error) {
-            res.status(500).json({ error: 'Invalid delete', stack: error});
+            return res.status(500).json({ error: 'Invalid delete', stack: error});
         }
     } catch (error) {
         return res.status(400).json({ error: 'Invalid token' });
