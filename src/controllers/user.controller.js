@@ -5,6 +5,7 @@ async function usersRead(req, res) {
     try {
         const users = await User.find();
         res.json({ users });
+        res.status(200);
 
     } catch (error) {
         return res.status(500).json({ error: 'Error', stack: error});
