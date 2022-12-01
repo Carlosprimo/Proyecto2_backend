@@ -33,7 +33,7 @@ async function reviewCreate(req, res) {
 async function reviewUser(req, res) {
     const userID = req.params.id
     try {
-        reviews = await Review.find({user: userID})
+        const reviews = await Review.find({user: userID})
         res.status(200).json({ reviews })
     } catch (error) {
         return res.status(500).json({ error: 'Error', stack: error});
